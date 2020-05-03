@@ -22,4 +22,19 @@ public class N3Controller {
 		return ViewNameUtils.VIEW_PRODUCTION_PAGE;
 	}
 	
+	@GetMapping("/material")
+	public String getMaterialPage() {
+		return  ViewNameUtils.VIEW_MATERIAL_PAGE;
+	}
+	
+	@GetMapping("/product")
+	public String getItemPage() {
+		return ViewNameUtils.VIEW_PRODUCT_PAGE;
+	}
+	
+	@GetMapping("/plan")
+	public String getPlanProductionPage() {
+		return ViewNameUtils.VIEW_PLAN_PRODUCTION_PAGE;
+	}
+ 	
 }

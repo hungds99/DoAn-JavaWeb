@@ -3,6 +3,7 @@ package com.javaweb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.javaweb.common.filestorage.StorageProperties;
 
@@ -15,6 +16,7 @@ import com.javaweb.common.filestorage.StorageProperties;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
+@EnableTransactionManagement
 public class RunRootApplication {
 
 	public static void main(String[] args) {

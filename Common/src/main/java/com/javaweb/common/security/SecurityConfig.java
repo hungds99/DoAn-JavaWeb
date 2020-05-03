@@ -47,9 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	
         http
-    	.csrf().disable()
+        .cors()
+        .and()
+        .csrf().disable()
         .authorizeRequests()	
-        	.anyRequest().fullyAuthenticated()
+        	.anyRequest().permitAll()
         .and()
         	.formLogin()
         	.loginPage("/login")
@@ -62,6 +64,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .accessDeniedPage("/403");
         	
     }
-
 
 }
