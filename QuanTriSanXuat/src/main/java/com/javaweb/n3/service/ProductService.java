@@ -5,7 +5,7 @@ package com.javaweb.n3.service;
 
 import java.util.List;
 
-import com.javaweb.n3.entity.Material;
+import com.javaweb.n3.dto.MaterialProductDTO;
 import com.javaweb.n3.entity.Product;
 
 /**
@@ -20,7 +20,9 @@ public interface ProductService {
 	
 	Product getOne(int id);
 	
-	Product findByProductName(String productName);
+	List<Product> findByProductName(String productName);
 	
-	List<Material> getMaterialOfProduct(int productId);
+	List<MaterialProductDTO> getMaterialOfProduct(int productId);
+	
+	void deleteProduct(int productId);
 }

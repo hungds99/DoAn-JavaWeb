@@ -32,11 +32,11 @@ public class Product implements Serializable {
 	private int id;
 
 	private String productName;
-	
+
 	private int productAmount;
-	
+
 	private String productUnit;
-	
+
 	private String productDescription;
 
 	@OneToMany(mappedBy = "product")
@@ -45,26 +45,14 @@ public class Product implements Serializable {
 
 	@OneToMany(mappedBy = "product")
 	@JsonIgnore
-	private List<ProductPlan> productPlan;
+	private List<Plan> plan;
 
-	@OneToMany(mappedBy = "product")
-	@JsonIgnore
-	private List<Worker> worker;
-
-	public List<ProductPlan> getProductPlan() {
-		return productPlan;
+	public List<Plan> getPlan() {
+		return plan;
 	}
 
-	public void setProductPlan(List<ProductPlan> productPlan) {
-		this.productPlan = productPlan;
-	}
-
-	public List<Worker> getWorker() {
-		return worker;
-	}
-
-	public void setWorker(List<Worker> worker) {
-		this.worker = worker;
+	public void setPlan(List<Plan> plan) {
+		this.plan = plan;
 	}
 
 	public int getId() {
@@ -113,6 +101,13 @@ public class Product implements Serializable {
 
 	public void setMaterialProduct(List<MaterialProduct> materialProduct) {
 		this.materialProduct = materialProduct;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", productName=" + productName + ", productAmount=" + productAmount
+				+ ", productUnit=" + productUnit + ", productDescription=" + productDescription + ", materialProduct="
+				+ materialProduct + ", plan=" + plan + "]";
 	}
 
 }

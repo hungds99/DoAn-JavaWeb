@@ -22,9 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Material implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2592245604053696185L;
 
 	@Id
@@ -33,12 +30,12 @@ public class Material implements Serializable {
 
 	private String materialName;
 
-	private int amount;
+	private int materialAmount;
 
-	private String unit;
+	private String materialUnit;
 
-	private double price;
-	
+	private double materialPrice;
+
 	@OneToMany(mappedBy = "material")
 	@JsonIgnore
 	private List<MaterialProduct> materialProduct;
@@ -59,37 +56,36 @@ public class Material implements Serializable {
 		this.materialName = materialName;
 	}
 
-	public int getAmount() {
-		return amount;
+	public int getMaterialAmount() {
+		return materialAmount;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setMaterialAmount(int materialAmount) {
+		this.materialAmount = materialAmount;
 	}
 
-	public String getUnit() {
-		return unit;
+	public String getMaterialUnit() {
+		return materialUnit;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
+	public void setMaterialUnit(String materialUnit) {
+		this.materialUnit = materialUnit;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getMaterialPrice() {
+		return materialPrice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setMaterialPrice(double materialPrice) {
+		this.materialPrice = materialPrice;
 	}
 
 	public List<MaterialProduct> getMaterialProduct() {
 		return materialProduct;
 	}
 
-	public void setMaterialProducts(List<MaterialProduct> materialProduct) {
+	public void setMaterialProduct(List<MaterialProduct> materialProduct) {
 		this.materialProduct = materialProduct;
 	}
 
-	
 }

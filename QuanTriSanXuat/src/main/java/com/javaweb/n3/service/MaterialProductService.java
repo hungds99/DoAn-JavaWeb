@@ -3,14 +3,17 @@
  */
 package com.javaweb.n3.service;
 
-import com.javaweb.n3.entity.Material;
-
 /**
  * @author HungDinh
  *
  */
 public interface MaterialProductService {
 
-	public Material saveMaterialProduct(int productId, int materialId, int amount);
+	public boolean saveMaterialProduct(int productId, int materialId, int amount);
+	
+	public void deleteMaterialProduct(int materialId, int productId);
+	
+	public void deleteProduct(int productId);
 	
 }
+	

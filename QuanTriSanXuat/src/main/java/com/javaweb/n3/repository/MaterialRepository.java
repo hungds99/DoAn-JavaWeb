@@ -18,7 +18,7 @@ import com.javaweb.n3.entity.Material;
 @Repository
 public interface MaterialRepository extends JpaRepository<Material, Integer> {
 
-	@Query("Select m from Material m where m.materialName like %:term%")
+	@Query("Select m from Material m where m.materialName like %:term% order by m.id ASC")
 	List<Material> findByMaterialName(String term);
 	
 }

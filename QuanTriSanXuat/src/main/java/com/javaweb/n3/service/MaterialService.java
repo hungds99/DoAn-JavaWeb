@@ -22,4 +22,8 @@ public interface MaterialService {
 	boolean deleteById(int id);
 	
 	List<Material> findByMaterialName(String term);
+	
+	List<Material> findAllByProductId(int productId);
+	
+	List<Material> getMaterials(int page, int offset);
 }

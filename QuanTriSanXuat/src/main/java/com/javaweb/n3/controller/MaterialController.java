@@ -32,24 +32,28 @@ public class MaterialController {
 	MaterialService materialService;
 	
 
+//	@GetMapping
+//	public List<Material> findAll() {
+//		return materialService.findAll();
+//	}
 	
 	@GetMapping
-	public List<Material> findAll() {
-		return materialService.findAll();
+	public List<Material> getMaterials(@RequestParam("currentPage") int page) {
+		return materialService.getMaterials((page - 1)*2, 2);
 	}
 	
-	@GetMapping("/{id}")
-	public Material getMaterial(@PathVariable(name = "id") int id) {
-		return materialService.findById(id);
-	}
-
-	@PostMapping("/save")
+	@PostMapping
 	public void addMaterial(@RequestBody Material material) {
 		if (materialService.saveOrEdit(material)) {
 			System.out.println("Thêm mới thành công !!");
 			return ;
 		}
 		System.out.println("Thêm mới thất bại !!");
+	}
+	
+	@GetMapping("/{id}")
+	public Material getMaterial(@PathVariable(name = "id") int id) {
+		return materialService.findById(id);
 	}
 	
 	@GetMapping("/delete/{id}")

@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.javaweb.n3.entity.Material;
+import com.javaweb.n3.dto.MaterialProductDTO;
 import com.javaweb.n3.entity.Product;
 import com.javaweb.n3.service.MaterialProductService;
 import com.javaweb.n3.service.ProductService;
@@ -48,6 +47,7 @@ public class ProductController {
 		return p;
 	}
 	
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable(name = "id") int id) {
 		return productService.getOne(id);
@@ -55,22 +55,36 @@ public class ProductController {
 	
 	@CrossOrigin
 	@GetMapping("/insertMaterial")
-	public Material insertMaterialToProduct(@RequestParam("productId") int productId, @RequestParam("materialId") int materialId, @RequestParam("materialAmount") int materialAmount) throws JsonProcessingException {
+	public boolean insertMaterialToProduct(@RequestParam("productId") int productId, @RequestParam("materialId") int materialId, @RequestParam("materialAmount") int materialAmount) {
 		
-		Material material = materialProductService.saveMaterialProduct(1, 1, 10);
+		materialProductService.saveMaterialProduct(productId, materialId, materialAmount);
 		
-		return material;
+		return true;
 	}
 	
-	@PostMapping("/search")
-	public Product search(@RequestParam("productName") String productName) {
-		return productService.findByProductName(productName);
+	@CrossOrigin
+	@GetMapping("/search")
+	public List<Product> search(@RequestParam("term") String term) {
+		System.out.println(term);
+		return productService.findByProductName(term);
 	}
 	
 	@CrossOrigin
 	@GetMapping("/getMaterial")
-	public List<Material> getMaterialOfProduct(@RequestParam("productId") int productId) {
+	public List<MaterialProductDTO> getMaterialOfProduct(@RequestParam("productId") int productId) {
 		return productService.getMaterialOfProduct(productId);
 	}
 	
-}
+	
+	@CrossOrigin
+	@PostMapping("/getMaterial")
+	public void deleteMaterialOfProduct(@RequestParam("materialId") int materialId, @RequestParam("productId") int productId) {
+		materialProductService.deleteMaterialProduct(materialId, productId);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/delete/{productId}")
+	public void deleteProduct(@PathVariable("productId") int productId) {
+		productService.deleteProduct(productId);
+	}
+ }

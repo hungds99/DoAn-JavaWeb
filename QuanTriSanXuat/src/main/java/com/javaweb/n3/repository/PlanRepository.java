@@ -13,4 +13,7 @@ import com.javaweb.n3.entity.Plan;
  */
 public interface PlanRepository extends JpaRepository<Plan, Integer>{
 
+//	@Query("SELECT p.id, p.planName, p.createdDate, p.startDate, p.endDate, p.planDescription FROM Plan p")
+//	List<Plan> findAll();
+	
 }
